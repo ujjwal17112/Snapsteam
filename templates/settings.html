@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="content-box">
+    <h2>Settings</h2>
+
+    {% if message %}
+        <p style="color:#00ff9c">{{ message }}</p>
+    {% endif %}
+
+    <form method="POST">
+        <label>Change Password</label>
+        <input type="password" placeholder="New Password">
+        <button class="btn">Save Changes</button>
+    </form>
+</div>
+
+{% endblock %}

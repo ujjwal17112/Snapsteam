@@ -1,0 +1,36 @@
+<!-- <h2>Register</h2>
+<form method="POST">
+<input name="username" required>
+<input name="password" type="password" required>
+
+<select name="role">
+<option value="viewer">Viewer</option>
+<option value="creator">Creator</option>
+</select>
+
+<button>Register</button>
+</form> -->
+
+
+
+{% extends "base.html" %}
+{% block content %}
+
+<div class="content-box">
+    <h2>Register</h2>
+
+    <form method="POST">
+        <input type="text" name="username" placeholder="Username" required>
+
+        <input type="password" name="password" placeholder="Password" required>
+
+        <select name="role" required>
+            <option value="viewer">Viewer</option>
+            <option value="creator">Creator</option>
+        </select>
+
+        <button class="btn">Register</button>
+    </form>
+</div>
+
+{% endblock %}

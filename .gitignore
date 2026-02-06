@@ -1,0 +1,91 @@
+############################
+# Python Cache
+############################
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+############################
+# Virtual Environment
+############################
+venv/
+env/
+.venv/
+ENV/
+
+############################
+# Environment / Secrets
+############################
+.env
+.env.*
+.aws/
+credentials
+config
+
+############################
+# AWS Temporary / Deployment
+############################
+.elasticbeanstalk/
+.ebextensions/
+
+############################
+# Uploaded User Content
+# (NEVER push user videos/images)
+############################
+static/videos/*
+static/profile_pics/*
+static/uploads/*
+
+# Keep folder structure
+!static/videos/.keep
+!static/profile_pics/.keep
+!static/uploads/.keep
+
+############################
+# Logs
+############################
+*.log
+logs/*
+!logs/.keep
+
+############################
+# Database Files (Local Dev Only)
+############################
+*.db
+*.sqlite3
+
+############################
+# IDE / Editor
+############################
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+############################
+# OS Junk
+############################
+.DS_Store
+Thumbs.db
+
+############################
+# Build / Distribution
+############################
+dist/
+build/
+*.egg-info/
+
+############################
+# Testing / Coverage
+############################
+.coverage
+htmlcov/
+.pytest_cache/
+
+############################
+# Temporary Files
+############################
+*.tmp
+*.bak

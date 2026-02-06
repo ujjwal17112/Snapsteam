@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SnapStream</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar">
+
+        <div class="logo">Snap<span>Stream</span></div>
+
+        <nav class="nav">
+            <a href="/dashboard" class="{% if page=='dashboard' %}active{% endif %}">Dashboard</a>
+            <a href="/profile" class="{% if page=='profile' %}active{% endif %}">My Profile</a>
+            <a href="/about" class="{% if page=='about' %}active{% endif %}">About</a>
+            <a href="/settings" class="{% if page=='settings' %}active{% endif %}">Settings</a>
+        </nav>
+
+        {% if role == "creator" %}
+            <a href="/upload" class="upload-btn">Upload Media</a>
+        {% endif %}
+
+    </aside>
+
+    <!-- ===== MAIN ===== -->
+    <main class="main">
+
+        <!-- ===== TOP BAR ===== -->
+        <div class="topbar">
+
+            <!-- SEARCH BAR -->
+            <form method="GET" action="/dashboard">
+                <input
+                    class="search"
+                    type="text"
+                    name="q"
+                    placeholder="🔍 Search videos..."
+                    value="{{ request.args.get('q','') }}"
+                >
+            </form>
+
+            <!-- USER SECTION -->
+            <div class="user-actions">
+
+                <!-- ⭐ THEME TOGGLE BUTTON -->
+                <button onclick="toggleTheme()" class="btn">🌗</button>
+
+                <!-- Profile Picture -->
+                <img
+                
+    src="{{ url_for('static', filename='profile_pics/' + (profile_pic if profile_pic else 'default.png')) }}?v={{ user }}"
+
+                    
+                    style="
+                        width:38px;
+                        height:38px;
+                        border-radius:50%;
+                        object-fit:cover;
+                        border:2px solid #00ff9c;
+                        margin-right:8px;
+                    "
+                >
+
+                <span>{{ user }}</span>
+
+                <a href="/logout" class="btn">Logout</a>
+
+            </div>
+
+        </div>
+
+        {% block content %}{% endblock %}
+
+    </main>
+
+</div>
+
+<!-- ⭐ LINK JS -->
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="content-box">
+
+    <h2>{{ video.title }}</h2>
+
+    <video width="100%" controls
+           poster="{{ url_for('static', filename='profile_pics/thumbnail.png') }}">
+
+        <source src="/videos/{{ video.filename }}" type="video/mp4">
+    </video>
+
+    <!-- ⭐ BACK BUTTON -->
+    <div style="margin-top:20px;">
+        <a href="/dashboard" class="btn">⬅ Back to Dashboard</a>
+    </div>
+
+</div>
+
+{% endblock %}

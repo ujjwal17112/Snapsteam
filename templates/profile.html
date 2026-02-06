@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="content-box">
+
+    <h2>My Profile</h2>
+
+    <img
+      
+    src="{{ url_for('static', filename='profile_pics/' + (profile_pic if profile_pic else 'default.png')) }}?v={{ user }}"
+
+        style="width:120px;height:120px;border-radius:50%;object-fit:cover;margin-bottom:20px;"
+    >
+
+    <p><b>Username:</b> {{ user }}</p>
+    <p><b>Role:</b> {{ role }}</p>
+
+    <form method="POST" action="/upload_profile_pic" enctype="multipart/form-data">
+
+        <input type="file" name="profile_pic" required>
+
+        <button class="btn">Upload Picture</button>
+
+    </form>
+
+</div>
+
+{% endblock %}

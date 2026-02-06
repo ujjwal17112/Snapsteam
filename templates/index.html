@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SnapStream</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        /* ===== LANDING PAGE ONLY ===== */
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .landing {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            background:
+                linear-gradient(
+                    rgba(0,0,0,0.55),
+                    rgba(0,0,0,0.85)
+                ),
+                url("{{ url_for('static', filename='images/hero-bg.png') }}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* subtle moving glow */
+        .landing::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 40%, rgba(0,255,156,0.25), transparent 45%);
+            animation: glowMove 10s ease-in-out infinite alternate;
+        }
+
+        @keyframes glowMove {
+            from { transform: translateX(-40px) translateY(-20px); }
+            to   { transform: translateX(40px) translateY(20px); }
+        }
+
+        .landing-content {
+            position: relative;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            padding: 70px 90px;
+            border-radius: 32px;
+            background: linear-gradient(
+                180deg,
+                rgba(0,255,156,0.08),
+                rgba(0,0,0,0.45)
+            );
+            box-shadow:
+                0 50px 140px rgba(0,0,0,0.85),
+                inset 0 0 0 1px rgba(255,255,255,0.08);
+        }
+
+        /* neon title */
+        .landing h1 {
+            font-size: 72px;
+            margin: 0;
+            font-weight: 800;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #00ff9c, #9dffe0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow:
+                0 0 30px rgba(0,255,156,0.35);
+        }
+
+        .landing p {
+            margin-top: 18px;
+            font-size: 20px;
+            color: #c7f7e4;
+            letter-spacing: 0.5px;
+        }
+
+        .landing-buttons {
+            margin-top: 42px;
+        }
+
+        .landing-buttons a {
+            margin: 0 12px;
+            padding: 14px 28px;
+            font-size: 16px;
+        }
+
+        /* floating particles */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(0,255,156,0.7);
+            border-radius: 50%;
+            animation: float 12s linear infinite;
+        }
+
+        @keyframes float {
+            from { transform: translateY(0); opacity: 0; }
+            10%  { opacity: 1; }
+            to   { transform: translateY(-120vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="landing">
+
+    <!-- particles -->
+    {% for i in range(30) %}
+        <div class="particle" style="
+            left: {{ range(0,100)|random }}%;
+            bottom: -10px;
+            animation-delay: {{ range(0,10)|random }}s;
+            animation-duration: {{ range(8,16)|random }}s;
+        "></div>
+    {% endfor %}
+
+    <div class="landing-content">
+        <h1>SnapStream</h1>
+        <p>AI-Powered Video Streaming Platform</p>
+
+        <div class="landing-buttons">
+            <a href="/login" class="btn">Login</a>
+            <a href="/register" class="btn">Get Started</a>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
