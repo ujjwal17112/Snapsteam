@@ -18,7 +18,7 @@ users_table = dynamodb.Table("Users")
 videos_table = dynamodb.Table("Videos")
 logs_table = dynamodb.Table("Logs")
 
-SNS_TOPIC_ARN = "YOUR_SNS_TOPIC_ARN"
+SNS_TOPIC_ARN = "arn:aws:sns:us-east-1:891377301418:SnapStream-Notifications"
 
 
 # -------- LOCAL STORAGE --------

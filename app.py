@@ -282,7 +282,7 @@ def logout():
     session.pop("role", None)
     session.clear()
 
-    return redirect("/login")
+    return redirect("/login")]
 
 
 
